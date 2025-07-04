@@ -1,0 +1,315 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #0f172a 0%, #0d3981 50%, #334155 100%);
+  color: #0f82e0;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar styling */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.3);
+}
+
+/* AI-inspired animations */
+@keyframes neural-pulse {
+  0%, 100% { 
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes data-flow {
+  0% {
+    background-position: 0% 50%;
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    background-position: 100% 50%;
+    opacity: 0.6;
+  }
+}
+
+@keyframes quantum-shift {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg);
+    filter: hue-rotate(0deg);
+  }
+  25% { 
+    transform: translateY(-10px) rotate(1deg);
+    filter: hue-rotate(90deg);
+  }
+  50% { 
+    transform: translateY(-5px) rotate(-1deg);
+    filter: hue-rotate(180deg);
+  }
+  75% { 
+    transform: translateY(-15px) rotate(0.5deg);
+    filter: hue-rotate(270deg);
+  }
+}
+
+@keyframes matrix-rain {
+  0% { 
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  10%, 90% { 
+    opacity: 1;
+  }
+  100% { 
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+@keyframes hologram-flicker {
+  0%, 100% { 
+    opacity: 1;
+    transform: skew(0deg);
+  }
+  2% { 
+    opacity: 0.8;
+    transform: skew(1deg);
+  }
+  4% { 
+    opacity: 1;
+    transform: skew(0deg);
+  }
+  8% { 
+    opacity: 0.9;
+    transform: skew(-0.5deg);
+  }
+}
+
+@keyframes ai-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(139, 92, 246, 0.6), 0 0 60px rgba(6, 182, 212, 0.3);
+  }
+}
+
+.animate-neural-pulse {
+  animation: neural-pulse 3s ease-in-out infinite;
+}
+
+.animate-data-flow {
+  animation: data-flow 4s linear infinite;
+}
+
+.animate-quantum-shift {
+  animation: quantum-shift 6s ease-in-out infinite;
+}
+
+.animate-matrix-rain {
+  animation: matrix-rain 8s linear infinite;
+}
+
+.animate-hologram-flicker {
+  animation: hologram-flicker 4s ease-in-out infinite;
+}
+
+.animate-ai-glow {
+  animation: ai-glow 2s ease-in-out infinite alternate;
+}
+
+/* Specific AI element classes */
+.ai-logo {
+  width: 2rem;
+  height: 2rem;
+  background: linear-gradient(to right, #6366f1, #7c3aed);
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: ai-glow 2s ease-in-out infinite alternate;
+}
+
+.ai-button {
+  background: linear-gradient(to right, #06b6d4, #2563eb);
+  color: white;
+  padding: 0.75rem 2rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border: 1px solid rgba(31, 33, 150, 0.3);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  animation: neural-pulse 3s ease-in-out infinite;
+  box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.25);
+}
+
+.ai-button:hover {
+  background: linear-gradient(to right, #7c3aed, #6366f1);
+}
+
+.ai-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  color: #67e8f9;
+  font-weight: 600;
+  background: linear-gradient(to right, rgba(30, 58, 138, 0.6), rgba(88, 28, 135, 0.6));
+  backdrop-filter: blur(12px);
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  animation: neural-pulse 3s ease-in-out infinite;
+}
+
+.floating-element {
+  border-radius: 9999px;
+  filter: blur(40px);
+}
+
+.floating-element-1 {
+  animation: quantum-shift 6s ease-in-out infinite;
+}
+
+.floating-element-2 {
+  animation: neural-pulse 3s ease-in-out infinite;
+}
+
+.floating-element-3 {
+  animation: data-flow 4s linear infinite;
+}
+
+.input-box {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-size: 0.875rem;
+  color: #a0c8cf; /* Changed to cyan color for better visibility */
+  background-color: rgba(15, 23, 42, 0.8); /* Darker background */
+  backdrop-filter: blur(12px);
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  margin: 0.75rem 0 1rem 0;
+  border: 1px solid rgba(99, 102, 241, 0.6); /* More visible border */
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.input-box:focus-within {
+  border-color: #6366f1;
+  box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.2);
+}
+
+/* Custom input label styling */
+.input-label {
+  color: #22d3ee !important; /* Bright cyan color for labels */
+  font-weight: 500;
+  text-shadow: 0 0 10px rgba(34, 211, 238, 0.3);
+}
+
+.btn-primary {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: white;
+  background: linear-gradient(to right, #10b981, #059669); /* Changed to green gradient */
+  box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.25);
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  margin: 0.5rem 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  animation: ai-glow 2s ease-in-out infinite alternate;
+  border: none;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(to right, #059669, #047857); /* Updated hover for green */
+  box-shadow: 0 20px 25px -5px rgba(16, 185, 129, 0.3);
+}
+
+.btn-small {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  background: linear-gradient(to right, #06b6d4, #2563eb);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: white;
+  padding: 0.625rem 1.5rem;
+  border-radius: 9999px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  animation: neural-pulse 3s ease-in-out infinite;
+  border: none;
+}
+
+.btn-small:hover {
+  background: linear-gradient(to right, #2563eb, #7c3aed);
+  box-shadow: 0 10px 15px -3px rgba(6, 182, 212, 0.3);
+}
+
+/* AI-themed components */
+.ai-card {
+  background: linear-gradient(to bottom right, rgba(30, 41, 59, 0.4), rgba(15, 23, 42, 0.4));
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(51, 65, 85, 0.5);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  transition: all 0.5s ease;
+  animation: hologram-flicker 4s ease-in-out infinite;
+  position: relative;
+}
+
+.ai-card:hover {
+  box-shadow: 0 25px 50px -12px rgba(99, 102, 241, 0.1);
+}
+
+.neural-grid {
+  background-image: 
+    linear-gradient(rgba(99, 102, 241, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(99, 102, 241, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.quantum-text {
+  color: transparent;
+  background-clip: text;
+  background-image: linear-gradient(to right, #22d3ee, #a855f7, #6366f1);
+  animation: data-flow 4s linear infinite;
+  background-size: 200% 200%;
+}
+
+.matrix-bg {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+}
