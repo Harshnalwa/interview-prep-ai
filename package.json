@@ -1,0 +1,19 @@
+{
+  "name": "interview-prep-ai-fullstack",
+  "version": "1.0.0",
+  "description": "AI-powered interview preparation platform",
+  "main": "backend/server.js",
+  "scripts": {
+    "install-all": "cd backend && npm install && cd ../frontend/interview-prep-ai && npm install",
+    "build": "cd frontend/interview-prep-ai && npm run build",
+    "start": "cd backend && npm start",
+    "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend/interview-prep-ai && npm run dev\"",
+    "vercel-build": "cd frontend/interview-prep-ai && npm install && npm run build"
+  },
+  "keywords": ["ai", "interview", "preparation", "react", "node"],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

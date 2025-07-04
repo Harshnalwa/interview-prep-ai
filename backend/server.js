@@ -14,8 +14,10 @@ const app = express();
 
 const allowedOrigins = [
   "https://interview-prep-ai-1-femj.onrender.com",
-  "http://localhost:5173"
-];
+  "http://localhost:5173",
+  process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null,
+  process.env.FRONTEND_URL
+].filter(Boolean);
 
 // Middleware to handle CORS
 app.use(
@@ -50,16 +52,23 @@ app.use("/api/ai/generate-explanation", protect, generateConceptExplanation);
 // Serve uploads folder with CORS headers for images
 app.use("/uploads", (req, res, next) => {
   const origin = req.headers.origin;
-  if ([
-    "https://interview-prep-ai-1-femj.onrender.com",
-    "http://localhost:5173"
-  ].includes(origin)) {
+  if (allowedOrigins.includes(origin)) {
     res.header("Access-Control-Allow-Origin", origin);
   }
   res.header("Access-Control-Allow-Methods", "GET,OPTIONS");
   next();
 }, express.static(path.join(__dirname, "uploads")));
 
-// Start Server
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// Health check endpoint
+app.get("/api/health", (req, res) => {
+  res.json({ status: "OK", message: "Server is running" });
+});
+
+// Start Server (only if not in Vercel environment)
+if (process.env.NODE_ENV !== 'production' || !process.env.VERCEL) {
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+}
+
+// Export the Express app for Vercel
+module.exports = app;
