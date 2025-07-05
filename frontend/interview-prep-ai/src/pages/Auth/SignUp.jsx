@@ -31,7 +31,7 @@ const SignUp = ({ setCurrentPage }) => {
   const handleSignUp = async (e) => {
     e.preventDefault();
 
-     let profileImageUrl = "";
+    let profileImageUrl = "";
 
     if (!fullName) {
       setError("Please enter full name.");
