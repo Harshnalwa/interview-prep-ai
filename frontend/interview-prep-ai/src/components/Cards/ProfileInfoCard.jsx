@@ -1,10 +1,14 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../context/userContext";
+import ProfileDropdown from "../ProfileDropdown";
+import Modal from "../Modal";
+import ProfileEditForm from "../ProfileEditForm";
 
 const ProfileInfoCard = () => {
   const { user, clearUser } = useContext(UserContext);
   const navigate = useNavigate();
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
   const handelLogout = () => {
     localStorage.clear();
@@ -12,26 +16,32 @@ const ProfileInfoCard = () => {
     navigate("/");
   };
 
+  const handleEditProfile = () => {
+    setIsEditModalOpen(true);
+  };
+
+  const closeEditModal = () => {
+    setIsEditModalOpen(false);
+  };
+
   return (
     user && (
-      <div className="flex items-center">
-        <img
-          src={user.profileImageUrl}
-          alt=""
-          className="w-11 h-11 bg-gray-300 rounded-full mr-3"
+      <>
+        <ProfileDropdown 
+          user={user}
+          onEditProfile={handleEditProfile}
+          onLogout={handelLogout}
         />
-        <div>
-          <div className="text-[15px] text-black font-bold leading-3">
-            {user.name || ""}
-          </div>
-          <button
-            className="text-amber-600 text-sm font-semibold cursor-pointer hover:underline"
-            onClick={handelLogout}
-          >
-            Logout
-          </button>
-        </div>
-      </div>
+
+        {/* Edit Profile Modal */}
+        <Modal
+          isOpen={isEditModalOpen}
+          onClose={closeEditModal}
+          hideHeader
+        >
+          <ProfileEditForm onClose={closeEditModal} />
+        </Modal>
+      </>
     )
   );
 };
