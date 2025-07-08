@@ -65,13 +65,13 @@ const Login = ({ setCurrentPage }) => {
   };
 
   return (
-    <div className="w-[90vw] md:w-[33vw] p-7 flex flex-col justify-center">
-      <h3 className="text-lg font-semibold text-black">Welcome Back</h3>
-      <p className="text-xs text-slate-700 mt-[5px] mb-6">
-        Please enter your details to log in
+    <div className="w-full p-8 flex flex-col justify-center min-h-[450px]">
+      <h3 className="text-2xl font-bold text-white mb-2">Welcome Back</h3>
+      <p className="text-sm text-gray-400 mb-8">
+        Enter your credentials to access your AI interview prep dashboard
       </p>
 
-      <form onSubmit={handleLogin}>
+      <form onSubmit={handleLogin} className="space-y-6">
         <Input
           value={email}
           onChange={({ target }) => setEmail(target.value)}
@@ -87,14 +87,18 @@ const Login = ({ setCurrentPage }) => {
           value={password}
           onChange={({ target }) => setPassword(target.value)}
           label="Password"
-          placeholder="Min 8 Characters"
+          placeholder="Enter your password"
           type="password"
           id="login-password"
           name="password"
           autoComplete="current-password"
         />
 
-        {error && <p className="text-red-500 text-xs pb-2.5">{error}</p>}
+        {error && (
+          <div className="bg-red-500/10 border border-red-500/30 rounded-lg p-3">
+            <p className="text-red-400 text-sm">{error}</p>
+          </div>
+        )}
 
         <button type="submit" className="btn-primary">
           LOGIN

@@ -25,16 +25,17 @@ const QuestionCard = ({
   const toggleExpand = () => {
     setIsExpanded(!isExpanded);
   };
-  return <>
-      <div className="bg-white rounded-lg mb-4 overflow-hidden py-4 px-5 shadow-xl shadow-gray-100/70 border border-gray-100/60 group">
+  return (
+    <>
+      <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl mb-6 overflow-hidden py-6 px-6 shadow-xl shadow-purple-500/10 border border-purple-500/20 group hover:shadow-purple-500/20">
         <div className="flex items-start justify-between cursor-pointer">
-          <div className="flex items-start gap-3.5">
-            <span className="text-xs md:text-[15px] font-semibold text-gray-400 leading-[18px]">
+          <div className="flex items-start gap-4">
+            <span className="text-sm md:text-base font-bold text-purple-400 leading-[18px]">
               Q
             </span>
 
             <h3
-              className="text-xs md:text-[14px] font-medium text-gray-800 mr-0 md:mr-20"
+              className="text-sm md:text-base font-medium text-white mr-0 md:mr-20 hover:text-purple-300"
               onClick={toggleExpand}
             >
               {question}
@@ -48,18 +49,18 @@ const QuestionCard = ({
               }`}
             >
               <button
-                className="flex items-center gap-2 text-xs text-indigo-800 font-medium bg-indigo-50 px-3 py-1 mr-2 rounded text-nowrap border border-indigo-50 hover:border-indigo-200 cursor-pointer"
+                className="flex items-center gap-2 text-sm text-purple-300 font-medium bg-purple-500/10 px-4 py-2 mr-3 rounded-lg border border-purple-500/30 hover:border-purple-400/50 hover:bg-purple-500/20 cursor-pointer"
                 onClick={onTogglePin}
               >
                 {isPinned ? (
-                  <LuPinOff className="text-xs" />
+                  <LuPinOff className="text-sm" />
                 ) : (
-                  <LuPin className="text-xs" />
+                  <LuPin className="text-sm" />
                 )}
               </button>
 
               <button
-                className="flex items-center gap-2 text-xs text-cyan-800 font-medium bg-cyan-50 px-3 py-1 mr-2 rounded text-nowrap border border-cyan-50 hover:border-cyan-200 cursor-pointer"
+                className="flex items-center gap-2 text-sm text-cyan-300 font-medium bg-cyan-500/10 px-4 py-2 mr-3 rounded-lg border border-cyan-500/30 hover:border-cyan-400/50 hover:bg-cyan-500/20 cursor-pointer"
                 onClick={() => {
                   setIsExpanded(true);
                   onLearnMore();
@@ -71,12 +72,12 @@ const QuestionCard = ({
             </div>
 
             <button
-              className="text-gray-400 hover:text-gray-500 cursor-pointer"
+              className="text-gray-400 hover:text-purple-300 cursor-pointer"
               onClick={toggleExpand}
             >
               <LuChevronDown
-                size={20}
-                className={`transform transition-transform duration-300 ${
+                size={22}
+                className={`transform ${
                   isExpanded ? "rotate-180" : ""
                 }`}
               />
@@ -90,13 +91,14 @@ const QuestionCard = ({
         >
           <div
             ref={contentRef}
-            className="mt-4 text-gray-700 bg-gray-50 px-5 py-3 rounded-lg"
+            className="mt-6 text-gray-300 bg-gray-900/70 px-6 py-4 rounded-xl border border-gray-700/50"
           >
              <AIResponsePreview content={answer} />
           </div>
         </div>
       </div>
     </>
+  );
 };
 
 export default QuestionCard;

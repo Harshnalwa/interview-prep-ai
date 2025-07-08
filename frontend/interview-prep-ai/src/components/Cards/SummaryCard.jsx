@@ -13,19 +13,17 @@ const SummaryCard = ({
   onSelect,
   onDelete,
 }) => {
-  return   <div
-      className="bg-white border border-gray-300/40 rounded-xl p-2 overflow-hidden cursor-pointer hover:shadow-xl shadow-gray-100 relative group"
+  return (
+    <div
+      className="bg-ai-card border border-purple-500/20 rounded-2xl p-1 overflow-hidden cursor-pointer hover:shadow-xl hover:shadow-purple-500/20 relative group transition-all duration-300 hover:scale-105 hover:ai-glow"
       onClick={onSelect}
     >
       <div
-        className="rounded-lg p-4 cursor-pointer relative"
-        style={{
-          background: colors.bgcolor,
-        }}
+        className="rounded-xl p-6 cursor-pointer relative bg-gradient-to-br from-gray-800/50 to-gray-900/50"
       >
         <div className="flex items-start">
-          <div className="flex-shrink-0 w-12 h-12 bg-white rounded-md flex items-center justify-center mr-4">
-            <span className="text-lg font-semibold text-black">
+          <div className="flex-shrink-0 w-12 h-12 bg-ai-primary rounded-xl flex items-center justify-center mr-4 shadow-lg">
+            <span className="text-lg font-bold text-white">
               {getInitials(role)}
             </span>
           </div>
@@ -35,8 +33,8 @@ const SummaryCard = ({
             <div className="flex justify-between items-start">
               {/* Title and Skills */}
               <div>
-                <h2 className="text-[17px] font-medium">{role}</h2>
-                <p className="text-xs text-medium text-gray-900">
+                <h2 className="text-lg font-bold text-white mb-1">{role}</h2>
+                <p className="text-sm text-purple-300 font-medium">
                   {topicsToFocus}
                 </p>
               </div>
@@ -45,7 +43,7 @@ const SummaryCard = ({
         </div>
 
         <button
-          className="hidden group-hover:flex items-center gap-2 text-xs text-rose-500 font-medium bg-rose-50 px-3 py-1 rounded text-nowrap border border-rose-100 hover:border-rose-200 cursor-pointer absolute top-0 right-0"
+          className="hidden group-hover:flex items-center gap-2 text-xs text-red-400 font-medium bg-red-500/10 px-3 py-2 rounded-lg border border-red-500/30 hover:border-red-400/50 hover:bg-red-500/20 cursor-pointer absolute top-4 right-4 transition-all duration-300"
           onClick={(e) => {
             e.stopPropagation();
             onDelete();
@@ -55,27 +53,28 @@ const SummaryCard = ({
         </button>
       </div>
 
-      <div className="px-3 pb-3">
-        <div className="flex items-center gap-3 mt-4">
-          <div className="text-[10px] font-medium text-black px-3 py-1 border-[0.5px] border-gray-900 rounded-full">
-            Experience: {experience} {experience == 1 ? "Year" : "Years"}
+      <div className="px-6 pb-6">
+        <div className="flex flex-wrap gap-2 mt-4">
+          <div className="text-xs font-medium text-purple-300 px-3 py-1.5 bg-purple-500/10 border border-purple-500/30 rounded-full">
+            {experience} {experience == 1 ? "Year" : "Years"}
           </div>
 
-          <div className="text-[10px] font-medium text-black px-3 py-1 border-[0.5px] border-gray-900 rounded-full">
+          <div className="text-xs font-medium text-blue-300 px-3 py-1.5 bg-blue-500/10 border border-blue-500/30 rounded-full">
             {questions} Q&A
           </div>
 
-          <div className="text-[10px] font-medium text-black px-3 py-1 border-[0.5px] border-gray-900 rounded-full">
-            Last Updated: {lastUpdated}
+          <div className="text-xs font-medium text-gray-300 px-3 py-1.5 bg-gray-500/10 border border-gray-500/30 rounded-full">
+            {lastUpdated}
           </div>
         </div>
 
         {/* Description */}
-        <p className="text-[12px] text-gray-500 font-medium line-clamp-2 mt-3">
+        <p className="text-sm text-gray-400 font-medium line-clamp-2 mt-4 leading-relaxed">
           {description}
         </p>
       </div>
     </div>
+  );
 };
 
 export default SummaryCard;

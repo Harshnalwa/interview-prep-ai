@@ -9,7 +9,7 @@ const AIResponsePreview = ({content}) => {
     if(!content) return null
   return (
      <div className="max-w-4xl mx-auto">
-      <div className="text-[14px] prose prose-slate dark:prose-invert max-w-none">
+      <div className="text-sm prose prose-invert max-w-none text-gray-300">
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
           components={{
@@ -25,46 +25,46 @@ const AIResponsePreview = ({content}) => {
                   language={language}
                 />
               ) : (
-                <code className="px-1 py-0.5 bg-gray-100 rounded text-sm" {...props}>
+                <code className="px-2 py-1 bg-purple-500/20 border border-purple-500/30 rounded text-sm text-purple-300" {...props}>
                   {children}
                 </code>
               );
             },
             p({ children }) {
-              return <p className="mb-4 leading-5">{children}</p>;
+              return <p className="mb-4 leading-6 text-gray-300">{children}</p>;
             },
             strong({ children }) {
-              return <strong>{children}</strong>;
+              return <strong className="text-white font-semibold">{children}</strong>;
             },
             em({ children }) {
-              return <em>{children}</em>;
+              return <em className="text-gray-300 italic">{children}</em>;
             },
             ul({ children }) {
-              return <ul className="list-disc pl-6 space-y-2 my-4">{children}</ul>;
+              return <ul className="list-disc pl-6 space-y-2 my-4 text-gray-300">{children}</ul>;
             },
             ol({ children }) {
-              return <ol className="list-decimal pl-6 space-y-2 my-4">{children}</ol>;
+              return <ol className="list-decimal pl-6 space-y-2 my-4 text-gray-300">{children}</ol>;
             },
             li({ children }) {
-              return <li className="mb-1">{children}</li>;
+              return <li className="mb-1 text-gray-300">{children}</li>;
             },
             blockquote({ children }) {
-              return <blockquote className="border-l-4 border-gray-200 pl-4 italic my-4">{children}</blockquote>;
+              return <blockquote className="border-l-4 border-purple-500/50 pl-4 italic my-4 text-gray-400 bg-purple-500/10 py-2 rounded">{children}</blockquote>;
             },
             h1({ children }) {
-              return <h1 className="text-2xl font-bold mt-6 mb-4">{children}</h1>;
+              return <h1 className="text-2xl font-bold mt-6 mb-4 text-white">{children}</h1>;
             },
             h2({ children }) {
-              return <h2 className="text-xl font-bold mt-6 mb-3">{children}</h2>;
+              return <h2 className="text-xl font-bold mt-6 mb-3 text-white">{children}</h2>;
             },
             h3({ children }) {
-              return <h3 className="text-lg font-bold mt-5 mb-2">{children}</h3>;
+              return <h3 className="text-lg font-bold mt-5 mb-2 text-white">{children}</h3>;
             },
             h4({ children }) {
-              return <h4 className="text-base font-bold mt-4 mb-2">{children}</h4>;
+              return <h4 className="text-base font-bold mt-4 mb-2 text-white">{children}</h4>;
             },
             a({ children, href }) {
-              return <a href={href} className="text-blue-600 hover:underline">{children}</a>;
+              return <a href={href} className="text-purple-400 hover:text-purple-300 hover:underline transition-colors">{children}</a>;
             },
             table({ children }) {
               return (

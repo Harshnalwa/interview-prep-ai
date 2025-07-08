@@ -83,17 +83,18 @@ const SignUp = ({ setCurrentPage }) => {
     }
   };
 
-  return <div className="w-[90vw] md:w-[33vw] p-7 flex flex-col justify-center">
-      <h3 className="text-lg font-semibold text-black">Create an Account</h3>
-      <p className="text-xs text-slate-700 mt-[5px] mb-6">
-        Join us today by entering your details below.
+  return (
+    <div className="w-full p-8 flex flex-col justify-center min-h-[500px]">
+      <h3 className="text-2xl font-bold text-white mb-2">Create Account</h3>
+      <p className="text-sm text-gray-400 mb-8">
+        Join our AI-powered interview preparation platform
       </p>
 
-      <form onSubmit={handleSignUp}>
+      <form onSubmit={handleSignUp} className="space-y-6">
 
         <ProfilePhotoSelector image={profilePic} setImage={setProfilePic} />
 
-        <div className="grid grid-cols-1 md:grid-cols-1 gap-2">
+        <div className="space-y-4">
           <Input
             value={fullName}
             onChange={({ target }) => setFullName(target.value)}
@@ -128,16 +129,20 @@ const SignUp = ({ setCurrentPage }) => {
           />
         </div>
 
-        {error && <p className="text-red-500 text-xs pb-2.5">{error}</p>}
+        {error && (
+          <div className="bg-red-500/10 border border-red-500/30 rounded-lg p-3">
+            <p className="text-red-400 text-sm">{error}</p>
+          </div>
+        )}
 
         <button type="submit" className="btn-primary">
           SIGN UP
         </button>
 
-        <p className="text-[13px] text-slate-800 mt-3">
-          Already an account?{" "}
+        <p className="text-sm text-gray-400 text-center">
+          Already have an account?{" "}
           <button
-            className="font-medium text-primary underline cursor-pointer"
+            className="font-semibold text-purple-400 hover:text-purple-300 cursor-pointer"
             onClick={() => {
               setCurrentPage("login");
             }}
@@ -147,6 +152,7 @@ const SignUp = ({ setCurrentPage }) => {
         </p>
       </form>
     </div>
+  );
 };
 
 export default SignUp;
