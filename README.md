@@ -7,6 +7,19 @@ An intelligent, AI-powered interview preparation platform that generates persona
 ![React](https://img.shields.io/badge/React-19+-blue?style=for-the-badge&logo=react)
 ![MongoDB](https://img.shields.io/badge/MongoDB-Database-green?style=for-the-badge&logo=mongodb)
 
+## 🌐 Live Demo
+
+🔗 **[Try the Live Application](https://interview-preparation-ai-1.onrender.com)**
+
+> Experience the AI-powered interview preparation platform in action! Create your account and start generating personalized interview questions instantly.
+
+**Demo Features:**
+- ✅ Full AI question generation
+- ✅ Interactive Q&A interface
+- ✅ Session management
+- ✅ Real-time explanations
+- ✅ Responsive design
+
 ## ✨ Features
 
 ### 🎯 **Personalized Interview Questions**
