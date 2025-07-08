@@ -1,0 +1,17 @@
+{
+  "name": "interview-prep-ai-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "install-backend": "cd backend && npm install",
+    "install-frontend": "cd frontend/interview-prep-ai && npm install",
+    "build-frontend": "cd frontend/interview-prep-ai && npm run build",
+    "build": "npm run install-backend && npm run install-frontend && npm run build-frontend",
+    "start": "cd backend && npm start",
+    "dev-backend": "cd backend && npm run dev",
+    "dev-frontend": "cd frontend/interview-prep-ai && npm run dev"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

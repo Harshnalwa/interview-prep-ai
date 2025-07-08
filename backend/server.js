@@ -14,7 +14,8 @@ const app = express();
 
 const allowedOrigins = [
   "https://interview-prep-ai-1-femj.onrender.com",
-  "http://localhost:5173"
+  "http://localhost:5173",
+  process.env.FRONTEND_URL || "https://interview-preparation-ai.vercel.app"
 ];
 
 // Middleware to handle CORS
@@ -44,21 +45,21 @@ app.use("/api/auth", authRoutes);
 app.use('/api/sessions', sessionRoutes);
 app.use('/api/questions', questionRoutes);
 
-app.use("/api/ai/generate-questions", protect, generateInterviewQuestions);
-app.use("/api/ai/generate-explanation", protect, generateConceptExplanation);
+app.post("/api/ai/generate-questions", protect, generateInterviewQuestions);
+app.post("/api/ai/generate-explanation", protect, generateConceptExplanation);
 
-// Serve uploads folder with CORS headers for images
-app.use("/uploads", (req, res, next) => {
-  const origin = req.headers.origin;
-  if ([
-    "https://interview-prep-ai-1-femj.onrender.com",
-    "http://localhost:5173"
-  ].includes(origin)) {
-    res.header("Access-Control-Allow-Origin", origin);
-  }
-  res.header("Access-Control-Allow-Methods", "GET,OPTIONS");
-  next();
-}, express.static(path.join(__dirname, "uploads")));
+// Serve uploads folder
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
+// Serve static files from React build
+// app.use(express.static(path.join(__dirname, "../frontend/interview-prep-ai/dist")));
+
+// Catch all handler: send back React's index.html file for any non-API routes
+// app.get("*", (req, res) => {
+//   if (!req.path.startsWith("/api") && !req.path.startsWith("/uploads")) {
+//     res.sendFile(path.join(__dirname, "../frontend/interview-prep-ai/dist/index.html"));
+//   }
+// });
 
 // Start Server
 const PORT = process.env.PORT || 5000;
