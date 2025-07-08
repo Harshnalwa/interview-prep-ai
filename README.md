@@ -299,7 +299,7 @@ For additional help, please open an issue on GitHub.
 ## 👨‍💻 Developer
 
 **Varun Kumar Singh** 
-[varunkumarsingh818@gmail.com](mailto:varunkumarsingh818@gmail.com)
+
 
 ---
 
