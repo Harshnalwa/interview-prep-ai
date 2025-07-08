@@ -297,12 +297,9 @@ Having issues? Please check:
 For additional help, please open an issue on GitHub.
 
 ## 👨‍💻 Developer
-
-**Developed by:** [Your Name]  
-**Portfolio:** [Your Portfolio URL]  
-**Email:** [your.email@example.com]  
-**LinkedIn:** [Your LinkedIn Profile]  
-**GitHub:** [Your GitHub Profile]  
+---
+Developed by: Varun Kumar Singh    
+Email:varunkumarsingh818@gmail.com 
 ---
 <div align="center">
   <p>Made with ❤️ and AI Innovation</p>
