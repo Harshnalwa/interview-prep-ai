@@ -14,6 +14,7 @@ const app = express();
 
 const allowedOrigins = [
   "https://interview-prep-ai-1-femj.onrender.com",
+  "https://interview-preparation-ai-1.onrender.com",
   "http://localhost:5173",
   process.env.FRONTEND_URL || "https://interview-preparation-ai.vercel.app"
 ];
