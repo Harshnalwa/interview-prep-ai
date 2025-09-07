@@ -35,13 +35,17 @@
 3. **Configuration**:
    - Name: `interview-preparation-ai-frontend`
    - Root Directory: `frontend/interview-prep-ai`
-   - Build Command: `npm install && npm run build`
+   - Build Command: `npm ci && npm run build:prod`
    - Publish Directory: `dist`
 
 4. **Environment Variables**:
    ```
    VITE_API_URL=https://your-backend-url.onrender.com
    ```
+
+**Alternative Build Commands (if above fails):**
+- Option 1: `npm install && npm run build:prod && ls -la dist/`
+- Option 2: `cd frontend/interview-prep-ai && npm ci && npm run build:prod`
 
 ## Post-Deployment Steps
 
