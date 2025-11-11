@@ -18,6 +18,7 @@ const allowedOrigins = [
   "https://interview-prep-7vj8m0kx1-varun-kumar-singhs-projects-3f9d06df.vercel.app",
   "http://localhost:5173",
   "http://localhost:5174",
+  "http://localhost:5175",
   process.env.FRONTEND_URL || "https://interview-preparation-ai.vercel.app"
 ];
 
@@ -26,6 +27,12 @@ app.use(
   cors({
     origin: function (origin, callback) {
       if (!origin) return callback(null, true);
+      
+      // Allow all localhost origins for development
+      if (origin.startsWith('http://localhost:')) {
+        return callback(null, true);
+      }
+      
       if (allowedOrigins.includes(origin)) {
         return callback(null, true);
       } else {
