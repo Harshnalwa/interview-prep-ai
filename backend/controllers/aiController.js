@@ -4,7 +4,7 @@ const {
   questionAnswerPrompt,
 } = require("../utils/prompts");
 
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+const ai = new GoogleGenAI(process.env.GEMINI_API_KEY);
 
 // @desc    Generate interview questions and answers using Gemini
 // @route   POST /api/ai/generate-questions
@@ -24,12 +24,10 @@ const generateInterviewQuestions = async (req, res) => {
       numberOfQuestions
     );
 
-    const response = await ai.models.generateContent({
-      model: "gemini-2.0-flash-lite",
-      contents: prompt,
-    });
-
-    let rawText = response.text;
+    const model = ai.getGenerativeModel({ model: "gemini-2.0-flash-exp" });
+    const result = await model.generateContent(prompt);
+    const response = result.response;
+    let rawText = response.text();
 
     // Clean it: Remove ```json and ``` from beginning and end
     const cleanedText = rawText
@@ -62,12 +60,10 @@ const generateConceptExplanation = async (req, res) => {
 
     const prompt = conceptExplainPrompt(question);
 
-    const response = await ai.models.generateContent({
-      model: "gemini-2.0-flash-lite",
-      contents: prompt,
-    });
-
-    let rawText = response.text;
+    const model = ai.getGenerativeModel({ model: "gemini-2.0-flash-exp" });
+    const result = await model.generateContent(prompt);
+    const response = result.response;
+    let rawText = response.text();
 
     // Clean it: Remove ```json and ``` from beginning and end
     const cleanedText = rawText

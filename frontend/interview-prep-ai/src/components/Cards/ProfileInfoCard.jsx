@@ -16,7 +16,7 @@ const ProfileInfoCard = () => {
     user && (
       <div className="flex items-center gap-2 bg-gray-800/50 backdrop-blur-sm rounded-xl p-2 border border-gray-700/50 hover:border-purple-500/30 -mt-1">
         <img
-          src={user.profileImageUrl}
+          src={user.profileImageUrl || null}
           alt=""
           className="w-8 h-8 bg-gray-600 rounded-full border-2 border-purple-500/30"
         />
