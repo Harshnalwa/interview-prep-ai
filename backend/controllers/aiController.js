@@ -4,7 +4,9 @@ const {
   questionAnswerPrompt,
 } = require("../utils/prompts");
 
-const ai = new GoogleGenAI(process.env.GEMINI_API_KEY);
+const ai = new GoogleGenAI({
+  apiKey: process.env.GEMINI_API_KEY,
+});
 
 // @desc    Generate interview questions and answers using Gemini
 // @route   POST /api/ai/generate-questions
@@ -13,7 +15,15 @@ const generateInterviewQuestions = async (req, res) => {
   try {
     const { role, experience, topicsToFocus, numberOfQuestions } = req.body;
 
-    if (!role || !experience || !topicsToFocus || !numberOfQuestions) {
+    if (
+  !role ||
+  experience === undefined ||
+  experience === null ||
+  experience === "" ||
+  !topicsToFocus ||
+  !numberOfQuestions
+)
+ {
       return res.status(400).json({ message: "Missing required fields" });
     }
 
@@ -24,10 +34,15 @@ const generateInterviewQuestions = async (req, res) => {
       numberOfQuestions
     );
 
-    const model = ai.getGenerativeModel({ model: "gemini-2.0-flash-exp" });
-    const result = await model.generateContent(prompt);
-    const response = result.response;
-    let rawText = response.text();
+  const result = await ai.models.generateContent({
+  model: "gemini-3.8-flash",
+  contents: prompt,
+  config: {
+    responseMimeType: "application/json",
+  },
+});
+
+let rawText = result.text;
 
     // Clean it: Remove ```json and ``` from beginning and end
     const cleanedText = rawText
@@ -40,11 +55,16 @@ const generateInterviewQuestions = async (req, res) => {
 
     res.status(200).json(data);
   } catch (error) {
-    res.status(500).json({
-      message: "Failed to generate questions",
-      error: error.message,
-    });
-  }
+  console.error("========== GEMINI API ERROR ==========");
+  console.error("Message:", error.message);
+  console.error("Details:", error);
+  console.error("======================================");
+
+  res.status(500).json({
+    message: "Failed to generate questions",
+    error: error.message,
+  });
+}
 };
 
 // @desc    Generate explains a interview question
@@ -60,11 +80,15 @@ const generateConceptExplanation = async (req, res) => {
 
     const prompt = conceptExplainPrompt(question);
 
-    const model = ai.getGenerativeModel({ model: "gemini-2.0-flash-exp" });
-    const result = await model.generateContent(prompt);
-    const response = result.response;
-    let rawText = response.text();
+const result = await ai.models.generateContent({
+  model: "gemini-3.8-flash",
+  contents: prompt,
+  config: {
+    responseMimeType: "application/json",
+  },
+});
 
+let rawText = result.text;
     // Clean it: Remove ```json and ``` from beginning and end
     const cleanedText = rawText
       .replace(/^```json\s*/, "") // remove starting ```json
